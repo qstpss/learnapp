@@ -18,7 +18,7 @@ public class AuthController implements AuthApi {
     private Map<String, String> credentialsMap;
 
     public AuthController() {
-        credentialsMap = new HashMap<>(){{
+        credentialsMap = new HashMap<String, String>(){{
             put("login1", "password1");
             put("login2", "password2");
             put("login3", "password3");
@@ -33,6 +33,6 @@ public class AuthController implements AuthApi {
         if (credentialsMap.containsKey(login) && credentialsMap.containsValue(password)) {
             return ResponseEntity.ok().body("Auth token = " + UUID.randomUUID().toString());
         }
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Credentials you are entered are wrong");
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Credentials you entered are wrong");
     }
 }
